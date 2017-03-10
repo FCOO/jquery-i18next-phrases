@@ -74,7 +74,7 @@
 
         //Get the key or add a temp-phrase
         if (typeof htmlOrKeyOrPhrase == 'string')//{
-            isKey = !!(window.i18next.t( htmlOrKeyOrPhrase, {defaultValue:''} ));
+            isKey = window.i18next.exists(htmlOrKeyOrPhrase);
         else {
             //It is a {da:'...', en:'...', de:'...'} object
             key = 'jqueryfni18n' + tempKeyId++;
