@@ -1,0 +1,34 @@
+{
+  "name": "jquery-i18next-phrases",
+  "version": "1.0.0",
+  "homepage": "https://github.com/FCOO/jquery-i18next-phrases",
+  "authors": [
+    "Niels Holt"
+  ],
+  "description": "",
+  "main": [
+    "dist/jquery-i18next-phrases.js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/FCOO/jquery-i18next-phrases.git"
+  },
+  "dependencies": {
+    "jquery": "latest",
+    "i18next": "latest",
+    "i18next-phrases": "fcoo/i18next-phrases#^1.0.0",
+    "jquery-i18next": "^1.2.0"
+  },
+  "devDependencies": {},
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "moduleType": [
+    "es6"
+  ]
+}

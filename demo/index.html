@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="da" style="font-size: 100%">
+<head>
+	<title>fcoo.dk - jquery-i18next-phrases - Demo</title>
+	<meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta http-equiv='x-dns-prefetch-control' content='on'>
+
+	<meta name='copyright' content='FCOO'>
+	<meta name='owner' content='FCOO'>
+    <style>
+        html, body { padding:0; margin: 0; width:100%; height:90%; }
+    </style>
+</head>
+
+<body>
+    <h2></h2>
+    <div id="test"></div>
+
+	
+	
+	<script src="bower_components.js"></script>
+	<script src="../src/jquery-i18next-phrases.js"></script>
+	<script>
+        (function ($) {
+            i18next.init();        
+            i18next.changeLanguage('en');
+
+            $('body').on('click', function(){
+                i18next.changeLanguage( i18next.language == 'en' ? 'da' : 'en' );
+                $('*').localize();
+            });
+        
+
+            i18next.addPhrase('testKey', {da:'Dette er en test', en:'This is a test'});
+
+            $('h2').i18n({da:'Klik for at skifte sprog', en:'Click to change language'});
+            $('#test').i18n('testKey');
+
+    
+
+        }(jQuery));
+    </script>
+</body>
+</html>
