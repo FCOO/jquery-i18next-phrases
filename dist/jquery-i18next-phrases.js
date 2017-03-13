@@ -53,7 +53,7 @@
         var options = null, 
             attribute = '', 
             argument,
-            isKey = true,
+            keyFound = true, 
             key = htmlOrKeyOrPhrase;
 
         for (var i=1; i<arguments.length; i++ ){
@@ -74,7 +74,7 @@
 
         //Get the key or add a temp-phrase
         if (typeof htmlOrKeyOrPhrase == 'string')//{
-            isKey = window.i18next.exists(htmlOrKeyOrPhrase);
+            keyFound = window.i18next.exists(htmlOrKeyOrPhrase);
         else {
             //It is a {da:'...', en:'...', de:'...'} object
             key = 'jqueryfni18n' + tempKeyId++;
@@ -82,45 +82,43 @@
             key = tempNS+':'+key;
         }    
 
-        if (isKey)
-            return this.each(function() {
-                var $this = $(this),
-                    oldData = $this.attr( jQuery_i18n_selectorAttr ),
-                    newData = [],
-                    oldStr,
-                    newStr = attribute ? '[' + attribute + ']' + key : key,
-                    keep;
-                oldData = oldData ? oldData.split(';') : [];
+        return this.each(function() {
+            var $this = $(this),
+                oldData = $this.attr( jQuery_i18n_selectorAttr ),
+                newData = [],
+                oldStr,
+                newStr = attribute ? '[' + attribute + ']' + key : key,
+                keep;
+            oldData = oldData ? oldData.split(';') : [];
             
-                for (var i=0; i<oldData.length; i++ ){
-                    oldStr = oldData[i];
-                    keep = true;
-                    //if the new key has an attribute => remove data with '[attribute]'
-                    if (attribute && (oldStr.indexOf('[' + attribute + ']') == 0))
-                        keep = false;                      
-                    //if the new key don't has a attribute => only keep other attributes
-                    if (!attribute && (oldStr.indexOf('[') == -1)) 
-                        keep = false;
-                    if (keep)
-                        newData.push( oldStr );
-                }
-                newData.push( newStr);                                
+            for (var i=0; i<oldData.length; i++ ){
+                oldStr = oldData[i];
+                keep = true;
+                //if the new key has an attribute => remove data with '[attribute]'
+                if (attribute && (oldStr.indexOf('[' + attribute + ']') == 0))
+                    keep = false;                      
+                //if the new key don't has a attribute => only keep other attributes
+                if (!attribute && (oldStr.indexOf('[') == -1)) 
+                    keep = false;
+                if (keep)
+                    newData.push( oldStr );
+            }
+            newData.push( newStr);                                
 
-                //Set data-i18n
-                $this.attr( jQuery_i18n_selectorAttr, newData.join(';') );
+            //Set data-i18n
+            $this.attr( jQuery_i18n_selectorAttr, newData.join(';') );
 
-                //Set data-i18n-options
-                if (options)
-                    $this.attr( 'data-' + jQuery_i18n_optionsAttr, JSON.stringify( options ) );
+            //Set data-i18n-options
+            if (options)
+                $this.attr( 'data-' + jQuery_i18n_optionsAttr, JSON.stringify( options ) );
 
+            if (keyFound)
                 //Update contents
                 $this.localize();        
-            });
-        else
-            //Not a key => simple add htmlOrKeyOrPhrase as html
-            return this.each(function() {
+            else
+                //Not (yet) a key => simple add htmlOrKeyOrPhrase as html
                 $(this).html( htmlOrKeyOrPhrase );
-            });
+        });
     };
 
 }(jQuery, this, document));
