@@ -31,7 +31,7 @@
             targetAttr    : jQuery_i18n_targetAttr,     // data-() attribute to grab target element to translate (if diffrent then itself)
             optionsAttr   : jQuery_i18n_optionsAttr,    // data-() attribute that contains options, will load/set if useOptionsAttr = true
             useOptionsAttr: true,                       // see optionsAttr
-            parseDefaultValueFromContent: true          // parses default values from content ele.val or ele.text
+            parseDefaultValueFromContent: false         // parses default values from content ele.val or ele.text
         }
     );
 
