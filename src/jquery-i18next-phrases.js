@@ -115,9 +115,13 @@
             if (keyFound)
                 //Update contents
                 $this.localize();        
-            else
-                //Not (yet) a key => simple add htmlOrKeyOrPhrase as html
-                $(this).html( htmlOrKeyOrPhrase );
+            else {
+                //Not (yet) a key => simple add htmlOrKeyOrPhrase as html or attr
+                if (attribute)
+                    $(this).attr( attribute, htmlOrKeyOrPhrase );
+                else
+                    $(this).html( htmlOrKeyOrPhrase );
+            }
         });
     };
 
