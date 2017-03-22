@@ -112,16 +112,16 @@
             if (options)
                 $this.attr( 'data-' + jQuery_i18n_optionsAttr, JSON.stringify( options ) );
 
-            if (keyFound)
-                //Update contents
-                $this.localize();        
-            else {
+            if (!keyFound){
                 //Not (yet) a key => simple add htmlOrKeyOrPhrase as html or attr
                 if (attribute)
                     $(this).attr( attribute, htmlOrKeyOrPhrase );
                 else
                     $(this).html( htmlOrKeyOrPhrase );
             }
+            //Update contents
+            $this.localize();        
+
         });
     };
 
