@@ -72,8 +72,12 @@
             htmlOrKeyOrPhrase = original; 
         }
 
+        //Convert number back to string
+        if (typeof htmlOrKeyOrPhrase == 'number')
+            htmlOrKeyOrPhrase = '' + htmlOrKeyOrPhrase;
+
         //Get the key or add a temp-phrase
-        if (typeof htmlOrKeyOrPhrase == 'string')//{
+        if (typeof htmlOrKeyOrPhrase == 'string')
             keyFound = window.i18next.exists(htmlOrKeyOrPhrase);
         else {
             //It is a {da:'...', en:'...', de:'...'} object
