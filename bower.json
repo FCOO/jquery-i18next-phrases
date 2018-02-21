@@ -1,6 +1,6 @@
 {
   "name": "jquery-i18next-phrases",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "homepage": "https://github.com/FCOO/jquery-i18next-phrases",
   "authors": [
     "Niels Holt"
@@ -16,7 +16,7 @@
   "dependencies": {
     "jquery": "latest",
     "i18next": "latest",
-    "i18next-phrases": "fcoo/i18next-phrases#^1.0.0",
+    "i18next-phrases": "fcoo/i18next-phrases#^2.0.0",
     "jquery-i18next": "^1.2.0"
   },
   "devDependencies": {},
