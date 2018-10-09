@@ -17,27 +17,28 @@
     <h2></h2>
     <div id="test"></div>
 
-	
-	
+
+
 	<script src="bower_components.js"></script>
 	<script src="../src/jquery-i18next-phrases.js"></script>
 	<script>
         (function ($) {
-            i18next.init();        
+            i18next.init();
             i18next.changeLanguage('en');
 
             $('body').on('click', function(){
                 i18next.changeLanguage( i18next.language == 'en' ? 'da' : 'en' );
+                alert( i18next.s({da:'En dansk sætning', en:'A englisk sentence'}) );
                 $('*').localize();
             });
-        
+
 
             i18next.addPhrase('testKey', {da:'Dette er en test', en:'This is a test'});
 
             $('h2').i18n({da:'Klik for at skifte sprog', en:'Click to change language'});
             $('#test').i18n('testKey');
 
-    
+
 
         }(jQuery));
     </script>
